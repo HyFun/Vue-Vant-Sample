@@ -1,24 +1,8 @@
+<!--
+ * @Author       : heyongfeng
+ * @Date         : 2021-04-06 12:50:13
+ * @Description  : 
+ * @LastEditors  : heyongfeng
+ * @LastEditTime : 2021-04-06 13:21:25
+-->
 # vue-vant-sample
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

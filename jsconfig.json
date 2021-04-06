@@ -1,0 +1,16 @@
+// 请安装vscode插件Path Intellisense，并配置路径别名
+// 详情参见：https://blog.csdn.net/solocao/article/details/88855197
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./",
+        "paths": {
+          "@/*": ["src/*"]
+        }
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
