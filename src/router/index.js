@@ -3,7 +3,7 @@
  * @Date         : 2021-04-06 12:49:59
  * @Description  : 路由
  * @LastEditors  : heyongfeng
- * @LastEditTime : 2021-04-06 14:09:41
+ * @LastEditTime : 2021-04-06 16:01:07
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -54,6 +54,14 @@ export const routes = [
         meta: {
           title: '个人中心',
           activePath: '/user'
+        }
+      },
+      {
+        path: '/user/changepwd',
+        component: () => import('@/views/user/changepwd.vue'),
+        meta: {
+          showBack: true,
+          title: '修改密码'
         }
       }
     ]

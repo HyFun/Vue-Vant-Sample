@@ -3,7 +3,7 @@
  * @Date         : 2021-04-06 12:51:11
  * @Description  : vue配置
  * @LastEditors  : heyongfeng
- * @LastEditTime : 2021-04-06 12:56:01
+ * @LastEditTime : 2021-04-06 15:32:26
  */
 const path = require('path') // 引入path模块
 function resolve(dir) {
@@ -43,6 +43,12 @@ module.exports = {
       // 全局的scss变量、样式文件
       sass: {
         prependData: `@import "@/styles/variable.scss";`
+      },
+      less: {
+        modifyVars: {
+          'green': '#D80C18'
+          // hack: `true; @import "@/styles/vant-variables.less";`
+        }
       }
     }
   },

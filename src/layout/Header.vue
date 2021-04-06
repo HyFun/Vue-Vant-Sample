@@ -3,11 +3,11 @@
  * @Date         : 2021-04-06 14:04:20
  * @Description  : 头部
  * @LastEditors  : heyongfeng
- * @LastEditTime : 2021-04-06 14:20:28
+ * @LastEditTime : 2021-04-06 16:03:03
 -->
 <template>
   <div class="layout_header">
-    <div v-if="$route.meta&&$route.meta.showBack" class="header_back">
+    <div v-if="$route.meta&&$route.meta.showBack" class="header_back" @click="()=>{$router.go(-1)}">
       <svg-icon icon="back" />
     </div>
     <div v-if="$route.meta&&$route.meta.title" class="header_title">

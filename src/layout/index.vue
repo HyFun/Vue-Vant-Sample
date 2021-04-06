@@ -3,13 +3,13 @@
  * @Date         : 2021-04-06 13:00:13
  * @Description  :
  * @LastEditors  : heyongfeng
- * @LastEditTime : 2021-04-06 14:14:13
+ * @LastEditTime : 2021-04-06 14:40:48
 -->
 <template>
-  <div class="layout">
+  <div class="layout" :style="{...layoutPadding}">
     <Header />
     <router-view />
-    <BottomNav />
+    <BottomNav v-if="showBottom" />
   </div>
 </template>
 <script>
@@ -20,6 +20,20 @@ export default {
   components: {
     Header,
     BottomNav
+  },
+  computed: {
+    showBottom() {
+      if (this.$route.meta && this.$route.meta.activePath) {
+        return true
+      }
+      return false
+    },
+    layoutPadding() {
+      if (this.showBottom) {
+        return { paddingBottom: '60px' }
+      }
+      return { paddingBottom: '0' }
+    }
   }
 
 }
