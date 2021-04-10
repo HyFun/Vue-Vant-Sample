@@ -3,7 +3,7 @@
  * @Date         : 2021-04-06 13:00:13
  * @Description  :
  * @LastEditors  : heyongfeng
- * @LastEditTime : 2021-04-06 14:40:48
+ * @LastEditTime : 2021-04-10 17:41:55
 -->
 <template>
   <div class="layout" :style="{...layoutPadding}">
@@ -41,8 +41,8 @@ export default {
 <style lang="scss" scoped>
 .layout {
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
     padding: 50px 0 60px 0;
 }
