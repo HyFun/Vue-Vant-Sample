@@ -3,7 +3,7 @@
  * @Date         : 2021-04-06 13:00:13
  * @Description  :
  * @LastEditors  : heyongfeng
- * @LastEditTime : 2021-04-10 17:41:55
+ * @LastEditTime : 2021-04-10 21:27:40
 -->
 <template>
   <div class="layout" :style="{...layoutPadding}">
@@ -43,6 +43,8 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
+    max-width: 375px;
+    margin: 0 auto;
     box-sizing: border-box;
     padding: 50px 0 60px 0;
 }

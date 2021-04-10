@@ -3,7 +3,7 @@
  * @Date         : 2021-04-06 12:49:59
  * @Description  : 路由
  * @LastEditors  : heyongfeng
- * @LastEditTime : 2021-04-06 16:01:07
+ * @LastEditTime : 2021-04-10 21:38:24
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -35,6 +35,14 @@ export const routes = [
         meta: {
           title: '首页',
           activePath: '/home'
+        }
+      },
+      {
+        path: '/home/calendar',
+        component: () => import('@/views/calendar/index.vue'),
+        meta: {
+          showBack: true,
+          title: '日历'
         }
       }
     ]
