@@ -3,7 +3,7 @@
  * @Date         : 2021-04-06 12:49:59
  * @Description  : 路由
  * @LastEditors  : heyongfeng
- * @LastEditTime : 2021-04-06 16:01:07
+ * @LastEditTime : 2021-04-21 14:36:37
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -62,6 +62,14 @@ export const routes = [
         meta: {
           showBack: true,
           title: '修改密码'
+        }
+      },
+      {
+        path: '/user/settag',
+        component: () => import('@/views/user/settag.vue'),
+        meta: {
+          showBack: true,
+          title: '设置标签'
         }
       }
     ]
