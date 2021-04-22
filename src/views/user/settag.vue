@@ -3,7 +3,7 @@
  * @Date         : 2021-04-21 14:34:49
  * @Description  :设置标签
  * @LastEditors  : heyongfeng
- * @LastEditTime : 2021-04-22 21:20:06
+ * @LastEditTime : 2021-04-22 23:22:36
 -->
 <template>
   <div>
@@ -25,7 +25,7 @@
     </div>
 
     <bt-check-tag
-      :value="selects"
+      v-model="selects"
       :options="options"
       :props="{label:'name',value: 'id',children: 'children',color: 'color'}"
     />

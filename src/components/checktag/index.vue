@@ -3,7 +3,7 @@
  * @Date         : 2021-04-22 20:35:39
  * @Description  :
  * @LastEditors  : heyongfeng
- * @LastEditTime : 2021-04-22 22:42:45
+ * @LastEditTime : 2021-04-22 23:36:42
 -->
 <template>
   <div class="tag_wrap">
@@ -18,8 +18,8 @@
           :key="index + '-' + subIndex"
         >
           <div class="tag_list_item" @click="clickTagItem(index,subIndex)">
-            <span>{{ subItem[propReal.label] }}</span>
-            <div v-show="subItem._show" class="tag_list_item_select">
+            <span :style="{color: selectAll.includes(subItem[propReal.value])?item.color:'#333'}">{{ subItem[propReal.label] }}</span>
+            <div v-show="selectAll.includes(subItem[propReal.value])" class="tag_list_item_select">
               <span :style="{borderRightColor: item.color,borderBottomColor: item.color,}" />
               <van-icon name="success" />
             </div>
@@ -60,6 +60,18 @@ export default {
       set(val) {
         this.$emit('input', val)
       }
+    },
+    selectAll() {
+      const list = []
+      this.datas.forEach(v => {
+        list.push(v.parentLabelId)
+        if (Array.isArray(v.detailList)) {
+          v.detailList.forEach(item => {
+            list.push(item.id)
+          })
+        }
+      })
+      return list
     }
   },
   methods: {
@@ -67,10 +79,12 @@ export default {
      * 点击选择item
      */
     clickTagItem(index, subIndex) {
+      const datas = JSON.parse(JSON.stringify(this.datas || []))
+
       const parent = this.options[index]
       const item = parent[this.propReal.children][subIndex]
       // 从value中找出已经选择的
-      const selectItem = this.value.find(v => v.parentLabelId === parent[this.propReal.value])
+      const selectItem = datas.find(v => v.parentLabelId === parent[this.propReal.value])
       if (selectItem) {
         // 说明已经有了
         if (parent.single === 0) {
@@ -80,14 +94,12 @@ export default {
           // selectItem.detailList.splice(0,1)
           if (index !== -1) {
             // 存在
-            item._show = false
             selectItem.detailList.splice(index, 1)
           } else {
             // 不存在 清空所有的
-            selectItem.detailList.splice(0, selectItem.detailList.length)
+            selectItem.detailList.splice(0, selectItem.detailList.length, { id: item[this.propReal.value] })
             // 添加新的
-            item._show = true
-            selectItem.detailList.push({ id: item[this.propReal.value] })
+            // selectItem.detailList.push()
           }
         } else if (parent.single === 1) {
           // 说明多选
@@ -96,44 +108,22 @@ export default {
           // 如果存在，则移除
           if (index !== -1) {
             // 存在
-            item._show = false
             selectItem.detailList.splice(index, 1)
           } else {
             // 如果不存在，则添加
-            item._show = true
             selectItem.detailList.push({ id: item[this.propReal.value] })
           }
         }
       } else {
         // 说明没有
-        item._show = true
-        this.value.push({
+        datas.push({
           single: parent.single,
           parentLabelId: parent[this.propReal.value],
           detailList: [{ id: item[this.propReal.value] }]
         })
       }
-      this.$forceUpdate()
-    },
-    /**
-     * 判断是否已经选中
-     */
-    hasChoosed(index, subIndex) {
-      const parent = this.options[index]
-      const item = parent[this.propReal.children][subIndex]
-      const selectItem = this.value.find(v => v.parentLabelId === parent[this.propReal.value])
-      if (selectItem) {
-        // 在看detailList是否选中
-        const e = (selectItem[this.propReal.children] || []).find(v => v.id === item[this.propReal.value])
-        console.log(e)
-        if (e) {
-          return true
-        } else {
-          return false
-        }
-      } else {
-        return false
-      }
+      this.datas = datas
+      // this.$forceUpdate()
     }
   }
 }
