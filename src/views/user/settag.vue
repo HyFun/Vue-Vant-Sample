@@ -3,7 +3,7 @@
  * @Date         : 2021-04-21 14:34:49
  * @Description  :设置标签
  * @LastEditors  : heyongfeng
- * @LastEditTime : 2021-04-21 15:14:56
+ * @LastEditTime : 2021-04-22 21:20:06
 -->
 <template>
   <div>
@@ -24,14 +24,82 @@
       </ul>
     </div>
 
+    <bt-check-tag
+      :value="selects"
+      :options="options"
+      :props="{label:'name',value: 'id',children: 'children',color: 'color'}"
+    />
   </div>
 </template>
 <script>
+import BtCheckTag from '@/components/checktag'
 export default {
   name: '',
+  components: {
+    BtCheckTag
+  },
   data() {
     return {
-      current: 0
+      options: [
+        {
+          id: '1',
+          name: '特约标签',
+          single: 1,
+          color: 'red',
+          children: [
+            {
+              id: '1-1',
+              name: '标签一'
+            },
+            {
+              id: '1-2',
+              name: '标签二标签二'
+            },
+            {
+              id: '1-3',
+              name: '标签三标签三标签三'
+            },
+            {
+              id: '1-4',
+              name: '标签四标签四标签四标签四'
+            },
+            {
+              id: '1-5',
+              name: '标签五标签五标签五标签五标签五'
+            }
+          ]
+        },
+        {
+          id: '2',
+          name: '客户星级',
+          single: 0,
+          color: 'blue',
+          children: [
+            {
+              id: '2-1',
+              name: '标签一'
+            },
+            {
+              id: '2-2',
+              name: '标签二'
+            },
+            {
+              id: '2-3',
+              name: '标签三'
+            },
+            {
+              id: '2-4',
+              name: '标签四'
+            },
+            {
+              id: '2-5',
+              name: '标签五'
+            }
+          ]
+        }
+      ],
+      current: 0,
+      selects: []
     }
   },
   computed: {
